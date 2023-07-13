@@ -32,7 +32,7 @@
                 </div>
             </div> 
             <div class="security-indicator">
-                <div id="security-indicator-bar" class="bar" style="width: 90%"></div>
+                <div id="security-indicator-bar" class="bar safe"></div>
             </div>   
         </section>
 
@@ -81,6 +81,7 @@
         const upperCaseCheckEl = document.querySelector("#uppercase-check");
         const numberCheckEl = document.querySelector("#number-check");
         const symbolCheckEl = document.querySelector("#symbol-check");
+        const securityIndicatorBarEl = document.querySelector("#security-indicator-bar");
 
         let passwordLength = 16;
 
@@ -111,8 +112,14 @@
             }
 
             inputEl.value = password;
-
+            calculateQuality();
             console.log(password);
+        }
+
+        function calculateQuality() {
+            const percent = Math.round((passwordLength / 64) * 100);
+            // console.log(percent);
+            securityIndicatorBarEl.style.width = `${percent}%`;
         }
 
         function copy() {

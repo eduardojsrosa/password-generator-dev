@@ -123,6 +123,7 @@
         passwordLengthEl.addEventListener("input", function() {
             passwordLength = passwordLengthEl.value;
             console.log(passwordLength);
+            document.querySelector("#password-length-text").innerText = passwordLength;
             generatePassword();
         });
 
